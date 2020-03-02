@@ -6,7 +6,8 @@ namespace INIEditor
 {
     public class INILoader
     {
-        public const char COMMENT_SYMBOL = ';';
+        public const char COMMENT_SYMBOL1 = ';';
+        public const char COMMENT_SYMBOL2 = '#';
         public const char COMBINE_GROUP_KEY = '_';
 
         private Dictionary<string, string> ms_Items = new Dictionary<string, string>();
@@ -38,7 +39,8 @@ namespace INIEditor
                     }
                 }
                 // 注释
-                else if (iterLine[0] == COMMENT_SYMBOL)
+                else if (iterLine[0] == COMMENT_SYMBOL1
+                    || iterLine[0] == COMMENT_SYMBOL2)
                 {
                     continue;
                 }

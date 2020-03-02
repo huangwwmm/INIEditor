@@ -37,8 +37,8 @@ namespace INIEditor
             DescriptionAttribute typeDescriptionAttribute = type.GetCustomAttribute<DescriptionAttribute>();
             if (typeDescriptionAttribute != null)
             {
-                stringBuilder.Append(INILoader.COMMENT_SYMBOL).Append(' ')
-                    .Append(typeDescriptionAttribute.Description.Replace("\r\n", $"\n{INILoader.COMMENT_SYMBOL} "))
+                stringBuilder.Append(INILoader.COMMENT_SYMBOL1).Append(' ')
+                    .Append(typeDescriptionAttribute.Description.Replace("\r\n", $"\n{INILoader.COMMENT_SYMBOL1} "))
                     .Append('\n');
             }
 
@@ -59,8 +59,8 @@ namespace INIEditor
                 DescriptionAttribute descriptionAttribute = iterProperty.GetCustomAttribute<DescriptionAttribute>();
                 if (descriptionAttribute != null)
                 {
-                    stringBuilder.Append(INILoader.COMMENT_SYMBOL).Append(' ')
-                        .Append(descriptionAttribute.Description.Replace("\r\n", $"\n{INILoader.COMMENT_SYMBOL} "))
+                    stringBuilder.Append(INILoader.COMMENT_SYMBOL1).Append(' ')
+                        .Append(descriptionAttribute.Description.Replace("\r\n", $"\n{INILoader.COMMENT_SYMBOL1} "))
                         .Append('\n');
                 }
 
@@ -68,7 +68,7 @@ namespace INIEditor
                 string value = valueObject == null ? string.Empty : valueObject.ToString();
                 if (string.IsNullOrEmpty(value))
                 {
-                    stringBuilder.Append(INILoader.COMMENT_SYMBOL).Append(' ');
+                    stringBuilder.Append(INILoader.COMMENT_SYMBOL1).Append(' ');
                 }
                 stringBuilder.Append(iterProperty.Name).Append('=').Append(value).Append('\n');
             }

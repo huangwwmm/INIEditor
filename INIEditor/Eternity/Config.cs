@@ -168,10 +168,10 @@ namespace INIEditor.Eternity
          , DefaultValue("debugger@huangwm.com")]
         public string DefaultFromAddress { get; set; }
         [Category("Mail")
-         , Description("{ToAddress} 多个收件人以':'分隔\r\n"
-            + "Debug组的收件人列表")
-         , DefaultValue("hwm@huangwm.com")]
-        public string DebugToAddress { get; set; }
+         , Description("{GroupName}:{Address1};{Address2}|{GroupName}:{Address1};{Address2}\r\n"
+            + "组之间以'|'分割，组名和收件地址以':'分割，多个收件人以':'分隔\r\n")
+         , DefaultValue("Debug:hwm@huangwm.com;huangwenmiao@leyoutech.com|Publish:xhzq@leyoutech.com")]
+        public string ToAddress { get; set; }
         #endregion
     }
 }
