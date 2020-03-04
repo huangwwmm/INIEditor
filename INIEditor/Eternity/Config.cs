@@ -181,7 +181,7 @@ namespace INIEditor.Eternity
         public string EternityNoticeAppKey { get; set; }
         [Category("DingDing")
            , Description("应用(Eternity通知)的Secret")
-           , DefaultValue("4n52Xp6Stif2ZrOfxu0esxtSuEDpfJkpztvhk8vT")]
+           , DefaultValue("4n52Xp6Stif2ZrOfxu0esxtSuEDpfJkpztvhk8vT-2xadlqogqe-hXXOO1cq7P6N")]
         public string EternityNoticeAppSecret { get; set; }
         #endregion
     }
