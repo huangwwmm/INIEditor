@@ -58,6 +58,7 @@ namespace INIEditor
 
             string[] lines = File.ReadAllLines(path);
             string commandName = string.Empty;
+            string tooltip = string.Empty;
             List<string> commandLines = new List<string>();
             for (int iLine = 0; iLine < lines.Length; iLine++)
             {
@@ -65,13 +66,17 @@ namespace INIEditor
                 if (iterLine.StartsWith("{")
                     && iterLine.EndsWith("}"))
                 {
-                    if (commandLines.Count != 0
-                        && !string.IsNullOrEmpty(commandName))
+                    if (!string.IsNullOrEmpty(commandName))
                     {
-                        AddFastCommand(commandName, commandLines.ToArray());
+                        AddFastCommand(commandName, commandLines.ToArray(), tooltip);
+                        tooltip = string.Empty;
                     }
                     commandLines.Clear();
                     commandName = iterLine.Substring(1, iterLine.Length - 2);
+                }
+                else if (iterLine.StartsWith("#"))
+                {
+                    tooltip = $"{tooltip}{iterLine.Substring(1)}\n";
                 }
                 else
                 {
@@ -79,14 +84,13 @@ namespace INIEditor
                 }
             }
 
-            if (commandLines.Count != 0
-                       && !string.IsNullOrEmpty(commandName))
+            if (!string.IsNullOrEmpty(commandName))
             {
-                AddFastCommand(commandName, commandLines.ToArray());
+                AddFastCommand(commandName, commandLines.ToArray(), tooltip);
             }
         }
 
-        private void AddFastCommand(string namePath, string[] commands)
+        private void AddFastCommand(string namePath, string[] commands, string tooltip)
         {
             m_FastCommands.Add(namePath, commands);
 
@@ -121,7 +125,11 @@ namespace INIEditor
                 if (iName == names.Length - 1)
                 {
                     currentItem.Tag = namePath;
-                    currentItem.Click += new EventHandler(this.OnFastCommandToolStripMenuItem_Click);
+                    currentItem.ToolTipText = tooltip;
+                    if (commands.Length > 0)
+                    {
+                        currentItem.Click += new EventHandler(this.OnFastCommandToolStripMenuItem_Click);
+                    }
                 }
             }
         }
