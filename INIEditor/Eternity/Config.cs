@@ -2,8 +2,8 @@
 
 namespace INIEditor.Eternity
 {
-    [Description("global_config.default.ini的用法是重命名为global_config.ini\r\n"
-        + "目录结构应为 Assets/global_config.ini\r\n配置方法[组名]\r\n"
+    [Description("目录结构应为 Assets/global_config.ini\r\n"
+        + "配置方法[组名]\r\n"
         + "每行一个配置项以第一个'='为分隔符 {key}={value}\r\n"
         + "注意不需要添加空格，空格会被包含在key和value中\r\n"
         + "不支持换行符制表符等，但是可以通过json等方式实现\r\n"
@@ -168,10 +168,10 @@ namespace INIEditor.Eternity
          , DefaultValue("debugger@huangwm.com")]
         public string DefaultFromAddress { get; set; }
         [Category("Mail")
-         , Description("{ToAddress} 多个收件人以':'分隔\r\n"
-            + "Debug组的收件人列表")
-         , DefaultValue("hwm@huangwm.com")]
-        public string DebugToAddress { get; set; }
+         , Description("{GroupName}:{Address1};{Address2}|{GroupName}:{Address1};{Address2}\r\n"
+            + "组之间以'|'分割，组名和收件地址以':'分割，多个收件人以':'分隔")
+         , DefaultValue("Debug:hwm@huangwm.com;huangwenmiao@leyoutech.com|Publish:xhzq@leyoutech.com")]
+        public string ToAddress { get; set; }
         #endregion
     }
 }

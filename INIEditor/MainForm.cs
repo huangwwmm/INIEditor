@@ -43,6 +43,8 @@ namespace INIEditor
             m_PropertyGrid.SelectedObject = config;
 
             m_FastCommands = new Dictionary<string, string[]>();
+            m_CommandToolStripMenuItem.DropDownItems.Clear();
+            LoadFastCommands($"{AppDomain.CurrentDomain.SetupInformation.ApplicationBase}../../../FastCommand/Fast-{m_TypeString.Replace('.', '_')}.ini");
             LoadFastCommands($"{AppDomain.CurrentDomain.SetupInformation.ApplicationBase}Fast-{m_TypeString.Replace('.', '_')}.ini");
         }
 
@@ -52,9 +54,6 @@ namespace INIEditor
             {
                 return;
             }
-
-            m_FastCommands.Clear();
-            m_CommandToolStripMenuItem.DropDownItems.Clear();
 
             string[] lines = File.ReadAllLines(path);
             string commandName = string.Empty;
