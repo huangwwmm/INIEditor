@@ -173,5 +173,16 @@ namespace INIEditor.Eternity
          , DefaultValue("Debug:hwm@huangwm.com;huangwenmiao@leyoutech.com|Publish:xhzq@leyoutech.com")]
         public string ToAddress { get; set; }
         #endregion
+
+        #region DingDing
+        [Category("DingDing")
+            , Description("应用(Eternity通知)的AppKey")
+            , DefaultValue("dingy1w80nbrfmeib3eb")]
+        public string EternityNoticeAppKey { get; set; }
+        [Category("DingDing")
+           , Description("应用(Eternity通知)的Secret")
+           , DefaultValue("4n52Xp6Stif2ZrOfxu0esxtSuEDpfJkpztvhk8vT")]
+        public string EternityNoticeAppSecret { get; set; }
+        #endregion
     }
 }
